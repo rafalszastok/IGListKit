@@ -94,7 +94,7 @@
 		986FB7401DBBAEA600A65C18 /* LabelSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FF881D9F39E00015D24B /* LabelSectionController.swift */; };
 		986FB7411DBBAEA900A65C18 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961B3A71D68B0B5001C9451 /* LabelCell.swift */; };
 		98B4DBF41DC2937A002BA58A /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B4DBF31DC2937A002BA58A /* Demo.storyboard */; };
-		B5CE51A61F7AA27100A8C7B3 /* RailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A51F7AA27000A8C7B3 /* RailViewController.swift */; };
+		B5CE51A61F7AA27100A8C7B3 /* RailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A51F7AA27000A8C7B3 /* RailsViewController.swift */; };
 		B5CE51AB1F7AA27F00A8C7B3 /* RailSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A81F7AA27F00A8C7B3 /* RailSectionController.swift */; };
 		B5CE51AC1F7AA27F00A8C7B3 /* TileSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A91F7AA27F00A8C7B3 /* TileSectionController.swift */; };
 		B5CE51AD1F7AA27F00A8C7B3 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51AA1F7AA27F00A8C7B3 /* ViewModels.swift */; };
@@ -242,7 +242,7 @@
 		986FB7381DBBAD8600A65C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B4DBF31DC2937A002BA58A /* Demo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Demo.storyboard; path = IGListKitExamples/Storyboard/Demo.storyboard; sourceTree = "<group>"; };
 		9B462C62486AED269F046A35 /* Pods-IGListKitTodayExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGListKitTodayExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IGListKitTodayExample/Pods-IGListKitTodayExample.debug.xcconfig"; sourceTree = "<group>"; };
-		B5CE51A51F7AA27000A8C7B3 /* RailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RailViewController.swift; sourceTree = "<group>"; };
+		B5CE51A51F7AA27000A8C7B3 /* RailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RailsViewController.swift; sourceTree = "<group>"; };
 		B5CE51A81F7AA27F00A8C7B3 /* RailSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RailSectionController.swift; sourceTree = "<group>"; };
 		B5CE51A91F7AA27F00A8C7B3 /* TileSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileSectionController.swift; sourceTree = "<group>"; };
 		B5CE51AA1F7AA27F00A8C7B3 /* ViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 		2961B3A31D68B0B5001C9451 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5CE51A51F7AA27000A8C7B3 /* RailViewController.swift */,
+				B5CE51A51F7AA27000A8C7B3 /* RailsViewController.swift */,
 				29F7E2A91E9283FF00197586 /* AnnouncingDepsViewController.swift */,
 				292658561E749EDC0041B56D /* CalendarViewController.swift */,
 				2961B3A41D68B0B5001C9451 /* DemosViewController.swift */,
@@ -919,7 +919,7 @@
 				296DD7571DD2163800206780 /* ManuallySelfSizingCell.swift in Sources */,
 				292658571E749EDC0041B56D /* CalendarViewController.swift in Sources */,
 				29C6297F1DCFD9E9004A5BB1 /* FeedItemSectionController.swift in Sources */,
-				B5CE51A61F7AA27100A8C7B3 /* RailViewController.swift in Sources */,
+				B5CE51A61F7AA27100A8C7B3 /* RailsViewController.swift in Sources */,
 				2942FF8E1D9F39E00015D24B /* ExpandableSectionController.swift in Sources */,
 				29F7E2AA1E9283FF00197586 /* AnnouncingDepsViewController.swift in Sources */,
 				56C05B721E49B32A0026DB39 /* CommentCell.m in Sources */,
