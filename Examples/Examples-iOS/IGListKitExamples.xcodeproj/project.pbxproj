@@ -94,6 +94,10 @@
 		986FB7401DBBAEA600A65C18 /* LabelSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FF881D9F39E00015D24B /* LabelSectionController.swift */; };
 		986FB7411DBBAEA900A65C18 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961B3A71D68B0B5001C9451 /* LabelCell.swift */; };
 		98B4DBF41DC2937A002BA58A /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B4DBF31DC2937A002BA58A /* Demo.storyboard */; };
+		B5CE51A61F7AA27100A8C7B3 /* RailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A51F7AA27000A8C7B3 /* RailViewController.swift */; };
+		B5CE51AB1F7AA27F00A8C7B3 /* RailSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A81F7AA27F00A8C7B3 /* RailSectionController.swift */; };
+		B5CE51AC1F7AA27F00A8C7B3 /* TileSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51A91F7AA27F00A8C7B3 /* TileSectionController.swift */; };
+		B5CE51AD1F7AA27F00A8C7B3 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE51AA1F7AA27F00A8C7B3 /* ViewModels.swift */; };
 		C82AE9741251907F18F77350 /* Pods_IGListKitMessageExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B1FA2EFFA5E994FEE587DE /* Pods_IGListKitMessageExample.framework */; };
 		CBA8F64BE2F00E8B3DEFF6ED /* Pods_IGListKitExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7316EF8201F89655D39E53 /* Pods_IGListKitExamples.framework */; };
 /* End PBXBuildFile section */
@@ -238,6 +242,10 @@
 		986FB7381DBBAD8600A65C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B4DBF31DC2937A002BA58A /* Demo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Demo.storyboard; path = IGListKitExamples/Storyboard/Demo.storyboard; sourceTree = "<group>"; };
 		9B462C62486AED269F046A35 /* Pods-IGListKitTodayExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGListKitTodayExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IGListKitTodayExample/Pods-IGListKitTodayExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B5CE51A51F7AA27000A8C7B3 /* RailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RailViewController.swift; sourceTree = "<group>"; };
+		B5CE51A81F7AA27F00A8C7B3 /* RailSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RailSectionController.swift; sourceTree = "<group>"; };
+		B5CE51A91F7AA27F00A8C7B3 /* TileSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileSectionController.swift; sourceTree = "<group>"; };
+		B5CE51AA1F7AA27F00A8C7B3 /* ViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		B7B1FA2EFFA5E994FEE587DE /* Pods_IGListKitMessageExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IGListKitMessageExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87895B5B9CB6A17AF47F4C9 /* Pods-IGListKitTodayExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGListKitTodayExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-IGListKitTodayExample/Pods-IGListKitTodayExample.release.xcconfig"; sourceTree = "<group>"; };
 		C544C2903D822EF8E4E91142 /* Pods-IGListKitExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGListKitExamples.release.xcconfig"; path = "Pods/Target Support Files/Pods-IGListKitExamples/Pods-IGListKitExamples.release.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +327,7 @@
 		2942FF821D9F39E00015D24B /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5CE51A71F7AA27F00A8C7B3 /* RailControllers */,
 				2942FF831D9F39E00015D24B /* DemoSectionController.swift */,
 				29D2E4AC1DD69B6000CD255D /* DisplaySectionController.swift */,
 				2942FF841D9F39E00015D24B /* EmbeddedSectionController.swift */,
@@ -385,6 +394,7 @@
 		2961B3A31D68B0B5001C9451 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5CE51A51F7AA27000A8C7B3 /* RailViewController.swift */,
 				29F7E2A91E9283FF00197586 /* AnnouncingDepsViewController.swift */,
 				292658561E749EDC0041B56D /* CalendarViewController.swift */,
 				2961B3A41D68B0B5001C9451 /* DemosViewController.swift */,
@@ -520,6 +530,16 @@
 				986FB7331DBBAD8600A65C18 /* TodayViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B5CE51A71F7AA27F00A8C7B3 /* RailControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5CE51A81F7AA27F00A8C7B3 /* RailSectionController.swift */,
+				B5CE51A91F7AA27F00A8C7B3 /* TileSectionController.swift */,
+				B5CE51AA1F7AA27F00A8C7B3 /* ViewModels.swift */,
+			);
+			path = RailControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -846,6 +866,7 @@
 				56C05B691E49B2120026DB39 /* ObjcDemoViewController.m in Sources */,
 				2961B3B01D68B28E001C9451 /* SearchCell.swift in Sources */,
 				2942FF8C1D9F39E00015D24B /* DemoSectionController.swift in Sources */,
+				B5CE51AD1F7AA27F00A8C7B3 /* ViewModels.swift in Sources */,
 				2981BA351DB868A500A987F9 /* ImageCell.swift in Sources */,
 				2942FF931D9F39E00015D24B /* SearchSectionController.swift in Sources */,
 				297546FA1DD25384002A6F89 /* FullWidthSelfSizingCell.swift in Sources */,
@@ -864,9 +885,11 @@
 				295D8A9A1E92EC96001F7C06 /* PostSectionController.m in Sources */,
 				29628F141D91905A0026B15A /* DetailLabelCell.swift in Sources */,
 				56C05B751E49B33C0026DB39 /* InteractiveCell.m in Sources */,
+				B5CE51AC1F7AA27F00A8C7B3 /* TileSectionController.swift in Sources */,
 				2991F9301D7BC0E400B0C58F /* EmptyViewController.swift in Sources */,
 				29F7E2AF1E92858500197586 /* ListeningSectionController.swift in Sources */,
 				29D2E4AD1DD69B6000CD255D /* DisplaySectionController.swift in Sources */,
+				B5CE51AB1F7AA27F00A8C7B3 /* RailSectionController.swift in Sources */,
 				2991F91E1D7BB30C00B0C58F /* User.swift in Sources */,
 				2991F9241D7BB89F00B0C58F /* NestedAdapterViewController.swift in Sources */,
 				2961B38E1D68B031001C9451 /* AppDelegate.swift in Sources */,
@@ -896,6 +919,7 @@
 				296DD7571DD2163800206780 /* ManuallySelfSizingCell.swift in Sources */,
 				292658571E749EDC0041B56D /* CalendarViewController.swift in Sources */,
 				29C6297F1DCFD9E9004A5BB1 /* FeedItemSectionController.swift in Sources */,
+				B5CE51A61F7AA27100A8C7B3 /* RailViewController.swift in Sources */,
 				2942FF8E1D9F39E00015D24B /* ExpandableSectionController.swift in Sources */,
 				29F7E2AA1E9283FF00197586 /* AnnouncingDepsViewController.swift in Sources */,
 				56C05B721E49B32A0026DB39 /* CommentCell.m in Sources */,

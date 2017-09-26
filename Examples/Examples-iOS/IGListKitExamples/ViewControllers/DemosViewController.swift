@@ -58,7 +58,9 @@ final class DemosViewController: UIViewController, ListAdapterDataSource {
         DemoItem(name: "Calendar (auto diffing)",
                  controllerClass: CalendarViewController.self),
         DemoItem(name: "Dependency Injection",
-                 controllerClass: AnnouncingDepsViewController.self)
+                 controllerClass: AnnouncingDepsViewController.self),
+        DemoItem(name: "Our custom example",
+                 controllerClass: RailsViewController.self)
     ]
 
     override func viewDidLoad() {
