@@ -25,7 +25,7 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
     var data: [RailViewModel] = []
     var iterator = 0
 
-    func updateData() {
+    @objc func updateData() {
         iterator += 1
         if iterator % 3 == 0 {
             data = [
@@ -61,22 +61,25 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
                     ])
             ]
         }
+        self.adapter.performUpdates(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         updateData()
-        if #available(iOS 10.0, *) {
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                self.updateData()
-                self.adapter.performUpdates(animated: true, completion: nil)
-            }
-            Timer.scheduledTimer(withTimeInterval: 1.1, repeats: true) { _ in
-                self.updateData()
-                self.adapter.performUpdates(animated: true, completion: nil)
-            }
-        }
+        Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(updateData),
+            userInfo: nil,
+            repeats: true)
+        Timer.scheduledTimer(
+            timeInterval: 1.1,
+            target: self,
+            selector: #selector(updateData),
+            userInfo: nil,
+            repeats: true)
         adapter.collectionView = collectionView
         adapter.dataSource = self
     }
@@ -90,9 +93,6 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         var boxedRails: [ListDiffable] = []
-//        boxedRails.append(DiffBox(
-//            value: "Title to show",
-//            uniqueIdentifier: "railTitleId"))
         boxedRails.append(DiffBox(
             value: data.first!,
             uniqueIdentifier: NSString(string: "railId")))
