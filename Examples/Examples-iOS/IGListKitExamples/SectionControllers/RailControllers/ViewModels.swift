@@ -60,9 +60,6 @@ final class RailViewModel: Equatable {
     }
 
     public static func ==(lhs: RailViewModel, rhs: RailViewModel) -> Bool {
-        let res = lhs.railId == rhs.railId
-            && lhs.tiles == rhs.tiles
-        print("Comparing \(lhs) and \(rhs) result=\(res)")
         return lhs.railId == rhs.railId
             && lhs.tiles == rhs.tiles
     }

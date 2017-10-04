@@ -16,6 +16,8 @@ import UIKit
 import IGListKit
 
 final class EmbeddedCollectionViewCell: UICollectionViewCell {
+    // Collection view injected into the cell.
+//    var collectionView: UICollectionView!
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,6 +29,21 @@ final class EmbeddedCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(view)
         return view
     }()
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        print("creating new embedded collection view cell")
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        print("creating new embedded collection view ce")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        print("preparing for reuse")
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()

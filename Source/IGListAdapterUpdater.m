@@ -440,7 +440,7 @@ static NSUInteger IGListIdentifierHash(const void *item, NSUInteger (*size)(cons
     if (localCompletion) {
         [self.completionBlocks addObject:localCompletion];
     }
-
+    NSLog(@"Pending objects %@", self.pendingTransitionToObjects);
     [self queueUpdateWithCollectionView:collectionView];
 }
 

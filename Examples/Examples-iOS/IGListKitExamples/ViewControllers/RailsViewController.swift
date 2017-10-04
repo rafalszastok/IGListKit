@@ -24,58 +24,75 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
 
     var data: RailViewModel!
     var iterator = 0
+    var isUpdating: Bool = false
+
+    func setData() {
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm:ss.SSSS"
+        let currentTime = df.string(from: Date())
+        if self.iterator % 3 == 0 {
+            self.data = RailViewModel(railId: "abc", tiles: [
+                Tile(title: "bbb"),
+                Tile(title: "ccc"),
+                Tile(title: "ddd"),
+                ])
+            print("\(currentTime) A")
+        } else if self.iterator % 3 == 1 {
+            self.data = RailViewModel(railId: "abc", tiles: [
+                Tile(title: "ccc"),
+                Tile(title: "ddd"),
+                Tile(title: "eee"),
+                Tile(title: "fff"),
+                ])
+            print("\(currentTime) B")
+        } else {
+            self.data = RailViewModel(railId: "abc", tiles: [
+                Tile(title: "aaa"),
+                Tile(title: "bbb"),
+                Tile(title: "ccc"),
+                Tile(title: "ddd"),
+                Tile(title: "eee"),
+                Tile(title: "fff"),
+                Tile(title: "ggg"),
+                Tile(title: "hhh"),
+                ])
+            print("\(currentTime) C")
+        }
+        self.iterator += 1
+    }
 
     @objc func updateData() {
-        iterator += 1
-        if iterator % 3 == 0 {
-            data = RailViewModel(railId: "abc", tiles: [
-                    Tile(title: "bbb"),
-                    Tile(title: "ccc"),
-                    Tile(title: "ddd"),
-                    ])
-            print("A")
-        } else if iterator % 3 == 1 {
-            data = RailViewModel(railId: "abc", tiles: [
-                    Tile(title: "ccc"),
-                    Tile(title: "ddd"),
-                    Tile(title: "eee"),
-                    Tile(title: "fff"),
-                    ])
-            print("B")
-        } else {
-            data = RailViewModel(railId: "abc", tiles: [
-                    Tile(title: "aaa"),
-                    Tile(title: "bbb"),
-                    Tile(title: "ccc"),
-                    Tile(title: "ddd"),
-                    Tile(title: "eee"),
-                    Tile(title: "fff"),
-                    Tile(title: "ggg"),
-                    Tile(title: "hhh"),
-                    ])
-            print("C")
-        }
+//        print("PerformBatch start...")
+//        self.adapter.performBatch(animated: true, updates: { (context) in
+//            print("... performBatch updates...")
+//            self.setData()
+//        }) { _ in
+//            print("...performBatch completed")
+//        }
+        setData()
         self.adapter.performUpdates(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
-        updateData()
-        Timer.scheduledTimer(
-            timeInterval: 2.0,
-            target: self,
-            selector: #selector(updateData),
-            userInfo: nil,
-            repeats: true)
-        Timer.scheduledTimer(
-            timeInterval: 2.1,
-            target: self,
-            selector: #selector(updateData),
-            userInfo: nil,
-            repeats: true)
+
+        setData()
         adapter.collectionView = collectionView
         adapter.dataSource = self
+        
+        Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(updateData),
+            userInfo: nil,
+            repeats: true)
+//        Timer.scheduledTimer(
+//            timeInterval: 2.1,
+//            target: self,
+//            selector: #selector(updateData),
+//            userInfo: nil,
+//            repeats: true)
     }
 
     override func viewDidLayoutSubviews() {
@@ -99,4 +116,3 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
     }
 
 }
-

@@ -40,7 +40,6 @@ extension TileSectionController {
         }
         cell.backgroundColor = UIColor.lightGray
         cell.text = tile?.title
-        print("\(index)=\(tile!.title)")
         return cell
     }
 

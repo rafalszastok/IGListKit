@@ -18,6 +18,7 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    NSLog(@"Number of sections is %ld for %@", self.sectionMap.objects.count, collectionView);
     return self.sectionMap.objects.count;
 }
 
