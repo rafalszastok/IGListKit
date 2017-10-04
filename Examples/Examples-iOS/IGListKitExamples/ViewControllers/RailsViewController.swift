@@ -22,34 +22,28 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
     }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-    var data: [RailViewModel] = []
+    var data: RailViewModel!
     var iterator = 0
 
     @objc func updateData() {
         iterator += 1
         if iterator % 3 == 0 {
-            data = [
-                RailViewModel(railId: "abc", tiles: [
-                    Tile(title: "aaa"),
+            data = RailViewModel(railId: "abc", tiles: [
                     Tile(title: "bbb"),
                     Tile(title: "ccc"),
                     Tile(title: "ddd"),
                     ])
-            ]
+            print("A")
         } else if iterator % 3 == 1 {
-            data = [
-                RailViewModel(railId: "abc", tiles: [
-                    Tile(title: "aaa"),
-                    Tile(title: "bbb"),
+            data = RailViewModel(railId: "abc", tiles: [
                     Tile(title: "ccc"),
                     Tile(title: "ddd"),
                     Tile(title: "eee"),
                     Tile(title: "fff"),
                     ])
-            ]
+            print("B")
         } else {
-            data = [
-                RailViewModel(railId: "abc", tiles: [
+            data = RailViewModel(railId: "abc", tiles: [
                     Tile(title: "aaa"),
                     Tile(title: "bbb"),
                     Tile(title: "ccc"),
@@ -59,7 +53,7 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
                     Tile(title: "ggg"),
                     Tile(title: "hhh"),
                     ])
-            ]
+            print("C")
         }
         self.adapter.performUpdates(animated: true, completion: nil)
     }
@@ -69,13 +63,13 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
         view.addSubview(collectionView)
         updateData()
         Timer.scheduledTimer(
-            timeInterval: 1.0,
+            timeInterval: 2.0,
             target: self,
             selector: #selector(updateData),
             userInfo: nil,
             repeats: true)
         Timer.scheduledTimer(
-            timeInterval: 1.1,
+            timeInterval: 2.1,
             target: self,
             selector: #selector(updateData),
             userInfo: nil,
@@ -92,17 +86,12 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
     // MARK: ListAdapterDataSource
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        var boxedRails: [ListDiffable] = []
-        boxedRails.append(DiffBox(
-            value: data.first!,
-            uniqueIdentifier: NSString(string: "railId")))
-        return boxedRails
+
+        return [DiffBox(value: data, uniqueIdentifier: NSString(string: data.railId))]
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return RailSectionController(
-            rail: data.first!,
-            sectionController: TileSectionController(tiles: data.first!.tiles, railIdentifier: "zzz"))
+        return RailSectionController(rail: data)
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {

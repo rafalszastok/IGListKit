@@ -7,7 +7,6 @@ import IGListKit
 class RailSectionController: ListSectionController {
 
     var rail: RailViewModel
-    let sectionController: TileSectionController
 
     lazy var adapter: ListAdapter = {
         let adapter = ListAdapter(updater: ListAdapterUpdater(),
@@ -17,10 +16,8 @@ class RailSectionController: ListSectionController {
         return adapter
     }()
 
-    init(rail: RailViewModel,
-         sectionController: TileSectionController) {
+    init(rail: RailViewModel) {
         self.rail = rail
-        self.sectionController = sectionController
         super.init()
     }
 
@@ -30,13 +27,15 @@ extension RailSectionController: ListAdapterDataSource {
     // MARK: ListAdapterDataSource
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [DiffBox(value: rail, uniqueIdentifier: NSString(string: rail.railId))]
+        return rail.tiles.map {
+            DiffBox(value: $0, uniqueIdentifier: $0.title as NSString)
+        }
     }
 
     func listAdapter(_ listAdapter: ListAdapter,
                      sectionControllerFor object: Any)
         -> ListSectionController {
-            return sectionController
+            return TileSectionController()
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
@@ -61,7 +60,7 @@ extension RailSectionController {
             fatalError()
         }
         cell.isAccessibilityElement = false
-
+        cell.backgroundColor = UIColor.red
         //swiftlint:enable force_cast
         adapter.collectionView = cell.collectionView
 
@@ -71,27 +70,10 @@ extension RailSectionController {
     override func didUpdate(to object: Any) {
         if let obj = object as? DiffBox<RailViewModel> {
             rail = obj.value
+            adapter.performUpdates(animated: true, completion: nil)
         }
     }
 
     override func didSelectItem(at index: Int) {
     }
 }
-
-extension RailSectionController {
-
-    var contentOffset: CGPoint {
-
-        guard let offset = adapter.collectionView?.contentOffset else {
-            return .zero
-        }
-
-        return offset
-    }
-
-    func updateOffset(to offSet: CGPoint) {
-        adapter.collectionView?.setContentOffset(offSet, animated: false)
-    }
-}
-
-

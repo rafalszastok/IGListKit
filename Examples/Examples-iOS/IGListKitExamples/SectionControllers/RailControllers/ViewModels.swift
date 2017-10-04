@@ -46,7 +46,7 @@ struct Tile: Equatable {
 }
 
 
-final class RailViewModel: Equatable, ListDiffable {
+final class RailViewModel: Equatable {
     let railId: String
     let tiles: [Tile]
 
@@ -54,18 +54,15 @@ final class RailViewModel: Equatable, ListDiffable {
         return railId as NSObjectProtocol
     }
 
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        if let rail = object as? RailViewModel {
-            return rail == self
-        }
-        return false
-    }
     init(railId: String, tiles: [Tile]) {
         self.railId = railId
         self.tiles = tiles
     }
 
     public static func ==(lhs: RailViewModel, rhs: RailViewModel) -> Bool {
+        let res = lhs.railId == rhs.railId
+            && lhs.tiles == rhs.tiles
+        print("Comparing \(lhs) and \(rhs) result=\(res)")
         return lhs.railId == rhs.railId
             && lhs.tiles == rhs.tiles
     }
