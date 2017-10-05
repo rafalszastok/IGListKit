@@ -87,12 +87,6 @@ final class RailsViewController: UIViewController, ListAdapterDataSource {
             selector: #selector(updateData),
             userInfo: nil,
             repeats: true)
-//        Timer.scheduledTimer(
-//            timeInterval: 2.1,
-//            target: self,
-//            selector: #selector(updateData),
-//            userInfo: nil,
-//            repeats: true)
     }
 
     override func viewDidLayoutSubviews() {
