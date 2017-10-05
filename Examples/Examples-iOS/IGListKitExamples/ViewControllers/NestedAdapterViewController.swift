@@ -15,6 +15,28 @@
 import UIKit
 import IGListKit
 
+class NestedAdapterViewModel: ListDiffable {
+    let identifier: NSString
+    let value: Int
+
+    func diffIdentifier() -> NSObjectProtocol {
+        return identifier
+    }
+
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        if let viewModel = object as? NestedAdapterViewModel {
+            return viewModel.identifier == self.identifier
+            && viewModel.value == self.value
+        }
+        return false
+    }
+
+    init(identifier: NSString, value: Int) {
+        self.identifier = identifier
+        self.value = value
+    }
+}
+
 final class NestedAdapterViewController: UIViewController, ListAdapterDataSource {
 
     lazy var adapter: ListAdapter = {
@@ -22,19 +44,42 @@ final class NestedAdapterViewController: UIViewController, ListAdapterDataSource
     }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-    let data: [Any] = [
-        "Ridiculus Elit Tellus Purus Aenean",
-        "Condimentum Sollicitudin Adipiscing",
-        14,
-        "Ligula Ipsum Tristique Parturient Euismod",
-        "Purus Dapibus Vulputate",
-        6,
-        "Tellus Nibh Ipsum Inceptos",
-        2
-    ]
+    var data: [NestedAdapterViewModel] = []
+
+    var iterator: Int = 0
+
+    @objc func updateData() {
+        if iterator % 3 == 0 {
+            data = [
+                NestedAdapterViewModel(identifier: "A", value: 1),
+                NestedAdapterViewModel(identifier: "B", value: 3),
+                NestedAdapterViewModel(identifier: "C", value: 4)
+            ]
+        } else if iterator % 3 == 1 {
+            data = [
+                NestedAdapterViewModel(identifier: "A", value: 1),
+                NestedAdapterViewModel(identifier: "B", value: 5),
+                NestedAdapterViewModel(identifier: "C", value: 6)
+            ]
+        } else {
+            data = [
+                NestedAdapterViewModel(identifier: "A", value: 2),
+                NestedAdapterViewModel(identifier: "B", value: 7),
+                NestedAdapterViewModel(identifier: "C", value: 8)
+            ]
+        }
+        iterator += 1
+        adapter.performUpdates(animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(updateData),
+                userInfo: nil, repeats: true)
+
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         adapter.dataSource = self
@@ -48,11 +93,11 @@ final class NestedAdapterViewController: UIViewController, ListAdapterDataSource
     // MARK: ListAdapterDataSource
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return data as! [ListDiffable]
+        return data
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        if object is Int {
+        if object is NestedAdapterViewModel {
             return HorizontalSectionController()
         } else {
             return LabelSectionController()

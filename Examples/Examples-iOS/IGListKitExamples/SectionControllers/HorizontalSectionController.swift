@@ -41,7 +41,8 @@ final class HorizontalSectionController: ListSectionController, ListAdapterDataS
     }
 
     override func didUpdate(to object: Any) {
-        number = object as? Int
+        number = (object as? NestedAdapterViewModel)?.value
+        adapter.performUpdates(animated: true)
     }
 
     // MARK: ListAdapterDataSource
